@@ -43,13 +43,13 @@ function Inserir() {
                 <FormContainer>
                     <Form>
                         <label htmlFor="nomeFilme">Nome do filme</label>
-                        <input type="text" id="nomeFilme"/>
+                        <input type="text" id="nomeFilme" required/>
 
                         <label htmlFor="data">Data de Lançamento</label>
-                        <input type="date" id="data" />
+                        <input type="date" id="data" required/>
 
                         <label htmlFor="descricao">Descrição</label>
-                        <textarea id="descricao" rows="10"></textarea>
+                        <textarea id="descricao" rows="10" required></textarea>
 
                         <BotaoEnviar texto="Adicionar"/>
                     </Form>

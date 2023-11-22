@@ -33,10 +33,10 @@ function Formulario() {
         <FormContainer>
             <Form>
                 <label htmlFor="usuario">Usuário</label>
-                <input type="text" id="usuario" />
+                <input type="text" id="usuario" required/>
 
                 <label htmlFor="senha">Senha</label>
-                <input type="password" id="senha"/>
+                <input type="password" id="senha" required/>
 
                 <BotaoEnviar texto='Entrar'/>
             </Form>

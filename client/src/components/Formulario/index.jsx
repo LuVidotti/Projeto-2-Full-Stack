@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BotaoEnviar from "../BotaoEnviar";
 
 const FormContainer = styled.div`
     display: grid;
@@ -25,22 +26,6 @@ const Form = styled.form`
         border: none;
         width: 95%;
     }
-
-    button {
-        border: none;
-        background-color: #46437c;
-        padding: 10px;
-        border-radius: 5px;
-        color: #FFF;
-        font-weight: 700;
-        width: 100%;
-        transition: all 0.25s;
-    }
-
-    button:hover {
-        cursor: pointer;
-        box-shadow: 10px 10px 20px black;
-    }
 `
 
 function Formulario() {
@@ -53,7 +38,7 @@ function Formulario() {
                 <label htmlFor="senha">Senha</label>
                 <input type="password" id="senha"/>
 
-                <button type="submit">Entrar</button>
+                <BotaoEnviar texto='Entrar'/>
             </Form>
         </FormContainer>
     )

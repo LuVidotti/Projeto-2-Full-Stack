@@ -26,7 +26,7 @@ const BotaoEstilizado = styled.button`
     right: 460px;
 `
 
-function Form() {
+function Busca() {
     return (
         <FormEstilizado>
             <InputEstilizado placeholder="Digite o nome de um filme..." />
@@ -35,4 +35,4 @@ function Form() {
     )
 }
 
-export default Form;
+export default Busca;

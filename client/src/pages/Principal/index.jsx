@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Titulo from "../../components/Titulo";
 import Header from "../../components/Header";
-import Form from "../../components/Form";
+import Busca from "../../components/Busca";
 import Filme from "../../components/Filme";
 
 const PrincipalContainer = styled.div`
@@ -23,7 +23,7 @@ function Principal() {
             <Header />
             <PrincipalContainer>
                 <Titulo titulo='Buscar filmes'/>
-                <Form />
+                <Busca />
                 <FilmesContainer>
                     <Filme />
                     <Filme />

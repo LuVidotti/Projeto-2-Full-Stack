@@ -45,5 +45,15 @@ router.get('/', (req,res) => {
     })
 })
 
+router.get('/:nomeFilme', (req,res) => {
+    const termoPesquisa = RegExp(req.params.nomeFilme, 'i');
+
+    Filme.find({nome: termoPesquisa}).then((filmes) => {
+        res.status(200).json(filmes);
+    }).catch((erro) => {
+        res.status(500).json({message: 'Erro interno no servidor', erro});
+    })
+})
+
 
 module.exports = router;

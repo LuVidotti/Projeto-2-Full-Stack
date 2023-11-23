@@ -7,6 +7,25 @@ const mongoose = require('mongoose');
 const Usuario = mongoose.model('usuarios');
 const SECRET = 'segredo_jwt';
 
+function verifyToken(req,res,next) {
+    const token = req.headers.authorization;
+
+    if(!token) {
+        return res.status(403).json({message: 'Erro, token nao fornecido'});
+    }
+
+    jwt.verify(token, SECRET, (err, decoded) => {
+        if(err) {
+            return res.status(400).json({message: 'Erro, token invalido'});
+        }
+
+        Usuario.findOne({usuario: decoded.usuario}).then((user) => {
+            req.user = user;
+            next();
+        })
+    })
+}
+
 router.post('/cadastrar', (req,res) => {
     let erros = [];
     
@@ -77,4 +96,7 @@ router.post('/login', (req,res) => {
 })
 
 
-module.exports = router;
+module.exports = {
+    router: router,
+    verifyToken: verifyToken
+};

@@ -3,8 +3,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 require('../models/Filme');
 const Filme = mongoose.model('filmes');
+const usuarios = require('../routes/usuarios');
 
-router.post('/', (req,res) => {
+router.post('/', usuarios.verifyToken, (req,res) => {
     let erros = [];
     
     if(!req.body.nome || typeof req.body.nome === undefined || req.body.nome === null) {
@@ -45,7 +46,7 @@ router.get('/', (req,res) => {
     })
 })
 
-router.get('/:nomeFilme', (req,res) => {
+router.get('/:nomeFilme', usuarios.verifyToken, (req,res) => {
     const termoPesquisa = RegExp(req.params.nomeFilme, 'i');
 
     Filme.find({nome: termoPesquisa}).then((filmes) => {

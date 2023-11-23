@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const PORT = 3001;
 const filmes = require('./routes/filmes');
-const usuarios = require('./routes/usuarios');
+const usuarios = require('./routes/usuarios').router;
+
 
 //config
     //mongoose

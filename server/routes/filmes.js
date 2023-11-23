@@ -1,0 +1,49 @@
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+require('../models/Filme');
+const Filme = mongoose.model('filmes');
+
+router.post('/', (req,res) => {
+    let erros = [];
+    
+    if(!req.body.nome || typeof req.body.nome === undefined || req.body.nome === null) {
+        erros.push({message: 'Erro, nome invalido'});
+    }
+
+    if(!req.body.dataLancamento || typeof req.body.dataLancamento === undefined || req.body.dataLancamento === null) {
+        erros.push({message: 'Erro, data invalida'});
+    }
+
+    if(!req.body.descricao || typeof req.body.descricao === undefined || req.body.descricao === null) {
+        erros.push({message: 'Erro, descricao invalida'});
+    }
+
+    if(erros.length > 0) {
+        res.status(422).json(erros);
+    } else {
+        const novoFilme = {
+            nome: req.body.nome,
+            dataLancamento: req.body.dataLancamento,
+            descricao: req.body.descricao
+        }
+
+        new Filme(novoFilme).save().then((filmeSalvo) => {
+            res.status(201).json({ message: 'Filme adicionado com sucesso!!!', filmeSalvo });
+        }).catch((erro) => {
+            console.error(erro);
+            res.status(500).json({ message: 'Erro interno no servidor', error: erro.message });
+        });
+    }
+})
+
+router.get('/', (req,res) => {
+    Filme.find().then((filme) => {
+        res.status(200).json(filme);
+    }).catch((erro) => {
+        res.status(500).json(erro);
+    })
+})
+
+
+module.exports = router;

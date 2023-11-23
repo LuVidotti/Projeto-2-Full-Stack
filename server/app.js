@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const PORT = 3001;
 const filmes = require('./routes/filmes');
+const usuarios = require('./routes/usuarios');
 
 //config
     //mongoose
@@ -23,6 +24,7 @@ const filmes = require('./routes/filmes');
 
 //rotas
 app.use('/api/filmes', filmes);
+app.use('/api/usuarios', usuarios);
 
 app.get('/', (req,res) => {
     res.status(200).json({message: 'ola mundo'});

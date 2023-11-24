@@ -28,15 +28,15 @@ const Form = styled.form`
     }
 `
 
-function Formulario() {
+function Formulario(props) {
     return(
         <FormContainer>
-            <Form>
+            <Form onSubmit={(e) => props.enviarForm(e)}>
                 <label htmlFor="usuario">Usuário</label>
-                <input type="text" id="usuario" required/>
+                <input type="text" id="usuario" required onChange={(e) => props.setUsuario(e.target.value)}/>
 
                 <label htmlFor="senha">Senha</label>
-                <input type="password" id="senha" required/>
+                <input type="password" id="senha" required onChange={(e) => props.setSenha(e.target.value)}/>
 
                 <BotaoEnviar texto='Entrar'/>
             </Form>

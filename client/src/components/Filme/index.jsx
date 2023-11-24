@@ -34,12 +34,12 @@ const Data = styled.h4`
     
 `
 
-function Filme() {
+function Filme(props) {
     return(
         <FilmeEstilizado>
-            <Titulo>Missao impossivel</Titulo>
-            <Data>22/12/2003</Data>
-            <Descricao>paksdhnjfashjdklfjsadlkfjlskdfjlskjflasjfa;sljfl;asjflasjdflasdjfl</Descricao>
+            <Titulo>{props.filme}</Titulo>
+            <Data>{props.data}</Data>
+            <Descricao>{props.descricao}</Descricao>
         </FilmeEstilizado>
     )
 }

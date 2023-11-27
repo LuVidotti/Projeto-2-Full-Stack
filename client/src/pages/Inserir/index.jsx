@@ -41,7 +41,6 @@ function Inserir() {
     const [nomeFilme, setNomeFilme] = useState('');
     const [data, setData] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [mensagemErro, setMensagemErro] = useState([]);
     const [mensagemSucesso, setMensagemSucesso] = useState('');
 
     async function adicionarFilme(e) {
@@ -61,7 +60,7 @@ function Inserir() {
             })
             setMensagemSucesso(resposta.data.message);
         } catch(erro){
-            setMensagemErro(erro);
+            console.log(erro);
         }
     }
 

@@ -14,7 +14,7 @@ const LoginContainer = styled.div`
 function Login() {
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
-    const [mensagemErro, setMensagemErro] = useState([]);
+    const [mensagemErro, setMensagemErro] = useState('');
 
     const navegar = useNavigate();
 
@@ -28,7 +28,8 @@ function Login() {
             localStorage.setItem('token', resposta.data.token);
             navegar('/');
         }).catch((erro) => {
-            setMensagemErro(erro.response.data);
+            console.log(erro);
+            setMensagemErro(erro.response.data.message);
         })
     }
 
@@ -38,8 +39,7 @@ function Login() {
             <LoginContainer>
                 <Titulo titulo="Login"/>
                 {
-                    mensagemErro.length > 0 ? mensagemErro.map((mensagem, index) => <MensagemErro texto={mensagem} key={index}/>)
-                    : null
+                    mensagemErro !== '' ? <MensagemErro texto={mensagemErro}/> : null
                 }
                 <Formulario setUsuario={setUsuario} setSenha={setSenha} enviarForm={enviarForm}/>
             </LoginContainer>

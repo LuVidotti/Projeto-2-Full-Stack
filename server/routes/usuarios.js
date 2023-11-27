@@ -65,34 +65,35 @@ router.post('/cadastrar', (req,res) => {
 })
 
 router.post('/login', (req,res) => {
-    let erros = [];
+    let user = req.body.usuario;
+    let password = req.body.senha;
 
-    if(!req.body.usuario || typeof req.body.usuario === undefined || req.body.usuario === null) {
-        erros.push('Erro, usuario invalido');
+    if(!user || typeof user === undefined || user === null) {
+      return res.status(404).json({ status: false, message: "Usuário ou senha invalidos" });
     }
 
-    if(!req.body.senha || typeof req.body.senha === undefined || req.body.senha === null) {
-        erros.push('Erro, senha invalida');
+    if(!password || typeof password === undefined || password === null) {
+      return res.status(404).json({ status: false, message: "Usuário ou senha invalidos" });
     }
 
-    if(erros.length > 0) {
-        res.status(402).json(erros);
-    } else {
-        Usuario.findOne({usuario: req.body.usuario}).then((usuario) => {
+        Usuario.findOne({usuario: user}).then((usuario) => {
             if(!usuario) {
-                res.status(404).json({message: 'Erro, este usuario nao existe'});
+                return res.status(404).json({message: 'Erro, este usuario nao existe'});
             }
 
-            bcrypt.compare(req.body.senha, usuario.senha).then((batem) => {
+            bcrypt.compare(password, usuario.senha).then((batem) => {
                 if(!batem) {
-                    res.status(401).json({message: 'Senha incorreta'});
+                   return res.status(401).json({message: 'Senha incorreta'});
                 }
 
-                const token = jwt.sign({userId: usuario._id}, SECRET, {expiresIn: '1h'});
-                res.status(200).json({message: 'Login realizado com sucesso!!!', token:token});
+                const token = jwt.sign({userId: usuario._id}, SECRET, {
+                expiresIn: '50 min'
+            });
+		
+            if(token)
+                return res.status(200).json({message: 'Login realizado com sucesso!!!', token: token });
             })
         })
-    } 
 })
 
 

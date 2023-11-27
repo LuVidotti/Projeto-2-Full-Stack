@@ -11,15 +11,15 @@ function verifyToken(req,res,next) {
     const token = req.headers.authorization;
 
     if(!token) {
-        return res.status(403).json({message: 'Erro, token nao fornecido'});
+        res.status(403).json({message: 'Erro, token nao fornecido'});
     }
 
     jwt.verify(token, SECRET, (err, decoded) => {
         if(err) {
-            return res.status(400).json({message: 'Erro, token invalido'});
+            res.status(400).json({message: 'Erro, token invalido', erro:err});
         }
 
-        Usuario.findOne({usuario: decoded.usuario}).then((user) => {
+        Usuario.findOne({_id: decoded.userId}).then((user) => {
             req.user = user;
             next();
         })
@@ -80,15 +80,15 @@ router.post('/login', (req,res) => {
     } else {
         Usuario.findOne({usuario: req.body.usuario}).then((usuario) => {
             if(!usuario) {
-                return res.status(404).json({message: 'Erro, este usuario nao existe'});
+                res.status(404).json({message: 'Erro, este usuario nao existe'});
             }
 
             bcrypt.compare(req.body.senha, usuario.senha).then((batem) => {
                 if(!batem) {
-                    return res.status(401).json({message: 'Senha incorreta'});
+                    res.status(401).json({message: 'Senha incorreta'});
                 }
 
-                const token = jwt.sign({usuario:usuario.usuario}, SECRET, {expiresIn: '1h'});
+                const token = jwt.sign({userId: usuario._id}, SECRET, {expiresIn: '1h'});
                 res.status(200).json({message: 'Login realizado com sucesso!!!', token:token});
             })
         })

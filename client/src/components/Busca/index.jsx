@@ -26,10 +26,10 @@ const BotaoEstilizado = styled.button`
     right: 460px;
 `
 
-function Busca() {
+function Busca(props) {
     return (
-        <FormEstilizado>
-            <InputEstilizado placeholder="Digite o nome de um filme..." />
+        <FormEstilizado onSubmit={(e) => props.buscarFilme(e)}>
+            <InputEstilizado placeholder="Digite o nome de um filme..." onChange={(e) => props.setBusca(e.target.value)}/>
             <BotaoEstilizado type="submit"><FaSistrix style={{color: '#FFF', fontSize: '22px'}}/></BotaoEstilizado>
         </FormEstilizado>
     )

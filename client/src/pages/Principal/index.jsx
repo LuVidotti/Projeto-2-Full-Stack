@@ -56,6 +56,7 @@ function Principal() {
             setFilmesBuscados(resposta.data);
         } catch(erro) {
             setMensagemErro(erro);
+            return;
         }
 
         

@@ -5,6 +5,7 @@ import BotaoEnviar from "../../components/BotaoEnviar";
 import axios from 'axios';
 import { useState } from "react";
 import MensagemSucesso from "../../components/MensagemSucesso";
+import MensagemErro from "../../components/MensagemErro";
 
 const FormContainer = styled.div`
     display: grid;
@@ -42,6 +43,7 @@ function Inserir() {
     const [data, setData] = useState('');
     const [descricao, setDescricao] = useState('');
     const [mensagemSucesso, setMensagemSucesso] = useState('');
+    const [mensagemErro, setMensagemErro] = useState('');
 
     async function adicionarFilme(e) {
         e.preventDefault();
@@ -61,6 +63,7 @@ function Inserir() {
             setMensagemSucesso(resposta.data.message);
         } catch(erro){
             console.log(erro);
+            setMensagemErro(erro.response.data.message);
         }
     }
 
@@ -71,6 +74,9 @@ function Inserir() {
                 <Titulo titulo='Adicionar filme'/>
                 {
                     mensagemSucesso !== '' ? <MensagemSucesso texto={mensagemSucesso}/> : null
+                }
+                {
+                    mensagemErro !== '' ? <MensagemErro texto={mensagemErro}/> : null
                 }
                 <FormContainer>
                     <Form onSubmit={(e) => adicionarFilme(e)}>

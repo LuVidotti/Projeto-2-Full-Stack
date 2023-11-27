@@ -55,8 +55,7 @@ function Principal() {
             setMensagemErro('');
             setFilmesBuscados(resposta.data);
         } catch(erro) {
-            setMensagemErro(erro);
-            return;
+            setMensagemErro(erro.response.data.message);
         }
 
         

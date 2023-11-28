@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 require('../models/Filme');
 const Filme = mongoose.model('filmes');
 const usuarios = require('../routes/usuarios');
+const redis = require('express-redis-cache');
+
+const cache = redis();
 
 router.post('/', usuarios.verifyToken, (req,res) => {
     let erros = [];
@@ -46,7 +49,7 @@ router.get('/', (req,res) => {
     })
 })
 
-router.get('/:nomeFilme', usuarios.verifyToken, (req,res) => {
+router.get('/:nomeFilme', usuarios.verifyToken, cache.route({expire: 10}), (req,res) => {
     const termoPesquisa = RegExp(req.params.nomeFilme, 'i');
 
     Filme.find({nome: termoPesquisa}).then((filmes) => {

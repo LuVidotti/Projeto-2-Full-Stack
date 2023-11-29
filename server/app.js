@@ -26,10 +26,6 @@ const usuarios = require('./routes/usuarios').router;
 app.use('/api/filmes', filmes);
 app.use('/api/usuarios', usuarios);
 
-app.get('/', (req,res) => {
-    res.status(200).json({message: 'ola mundo'});
-})
-
 
 //server
 

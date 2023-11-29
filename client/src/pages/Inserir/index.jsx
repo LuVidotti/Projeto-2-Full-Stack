@@ -62,8 +62,7 @@ function Inserir() {
             })
             setMensagemSucesso(resposta.data.message);
         } catch(erro){
-            console.log(erro);
-            setMensagemErro(erro.response.data.message);
+            setMensagemErro(erro.response.data[0].message);
         }
     }
 

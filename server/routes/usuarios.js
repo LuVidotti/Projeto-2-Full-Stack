@@ -64,9 +64,23 @@ router.post('/cadastrar', (req,res) => {
     }
 })
 
+const caracteresProibidos = /[<>(){}[\];,.]/;
+
+function validarCaracteresIndesejados(input) {
+    return caracteresProibidos.test(input);
+}
+
 router.post('/login', (req,res) => {
     let user = req.body.usuario;
     let password = req.body.senha;
+
+    if(validarCaracteresIndesejados(user)) {
+        return res.status(402).json({ status: false, message: "Erro, ha alguns caracteres invalidos no campo usuario" });
+    }
+
+    if(validarCaracteresIndesejados(password)) {
+        return res.status(402).json({ status: false, message: "Erro, ha alguns caracteres invalidos no campo senha" });
+    }
 
     if(!user || typeof user === undefined || user === null) {
       return res.status(404).json({ status: false, message: "Usuário ou senha invalidos" });

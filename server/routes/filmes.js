@@ -8,8 +8,22 @@ const redis = require('express-redis-cache');
 
 const cache = redis();
 
+const caracteresProibidos = /[<>(){}[\];,.]/;
+
+function validarCaracteresIndesejados(input) {
+    return caracteresProibidos.test(input);
+}
+
 router.post('/', usuarios.verifyToken, (req,res) => {
     let erros = [];
+
+    if(validarCaracteresIndesejados(req.body.nome)) {
+        erros.push({message: "Erro, ha alguns caracteres invalidos no campo nome"});
+    } 
+
+    if(validarCaracteresIndesejados(req.body.descricao)) {
+        erros.push({message: "Erro, ha alguns caracteres invalidos no campo descricao"});
+    } 
     
     if(!req.body.nome || typeof req.body.nome === undefined || req.body.nome === null) {
         erros.push({message: 'Erro, nome invalido'});

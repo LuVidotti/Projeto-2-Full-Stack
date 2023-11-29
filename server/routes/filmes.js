@@ -25,15 +25,15 @@ router.post('/', usuarios.verifyToken, (req,res) => {
         erros.push({message: "Erro, ha alguns caracteres invalidos no campo descricao"});
     } 
     
-    if(!req.body.nome || typeof req.body.nome === undefined || req.body.nome === null) {
+    if(!req.body.nome || typeof req.body.nome === undefined || req.body.nome === null || req.body.nome === "") {
         erros.push({message: 'Erro, nome invalido'});
     }
 
-    if(!req.body.dataLancamento || typeof req.body.dataLancamento === undefined || req.body.dataLancamento === null) {
+    if(!req.body.dataLancamento || typeof req.body.dataLancamento === undefined || req.body.dataLancamento === null || req.body.dataLancamento === "") {
         erros.push({message: 'Erro, data invalida'});
     }
 
-    if(!req.body.descricao || typeof req.body.descricao === undefined || req.body.descricao === null) {
+    if(!req.body.descricao || typeof req.body.descricao === undefined || req.body.descricao === null || req.body.descricao === "") {
         erros.push({message: 'Erro, descricao invalida'});
     }
 

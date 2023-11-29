@@ -82,11 +82,11 @@ router.post('/login', (req,res) => {
         return res.status(402).json({ status: false, message: "Erro, ha alguns caracteres invalidos no campo senha" });
     }
 
-    if(!user || typeof user === undefined || user === null) {
+    if(!user || typeof user === undefined || user === null || user === "") {
       return res.status(404).json({ status: false, message: "Usuário ou senha invalidos" });
     }
 
-    if(!password || typeof password === undefined || password === null) {
+    if(!password || typeof password === undefined || password === null || password === "") {
       return res.status(404).json({ status: false, message: "Usuário ou senha invalidos" });
     }
 

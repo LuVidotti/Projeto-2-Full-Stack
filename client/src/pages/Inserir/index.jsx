@@ -3,9 +3,11 @@ import Titulo from "../../components/Titulo";
 import Header from "../../components/Header";
 import BotaoEnviar from "../../components/BotaoEnviar";
 import axios from 'axios';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MensagemSucesso from "../../components/MensagemSucesso";
 import MensagemErro from "../../components/MensagemErro";
+import io from "socket.io-client";
+import NotificacaoSocket from "../../components/NotificacaoSocket";
 
 const FormContainer = styled.div`
     display: grid;
@@ -44,6 +46,9 @@ function Inserir() {
     const [descricao, setDescricao] = useState('');
     const [mensagemSucesso, setMensagemSucesso] = useState('');
     const [mensagemErro, setMensagemErro] = useState('');
+    const [socketListener, setSocketListener] = useState(null);
+    const [notificacaoTexto, setNotificacaoTexto] = useState('');
+    const [mostrarNotificacao, setMostrarNotificacao] = useState(false);
 
     async function adicionarFilme(e) {
         e.preventDefault();
@@ -60,16 +65,49 @@ function Inserir() {
                     Authorization: token
                 }
             })
+            socketListener.emit("filme_adicionado", ({message: "Um filme acabou de ser adicionado!!!"}));
+
             setMensagemSucesso(resposta.data.message);
         } catch(erro){
             setMensagemErro(erro.response.data[0].message);
         }
     }
 
+    useEffect(() => {
+        const socket = io.connect("http://localhost:3001");
+        setSocketListener(socket);
+
+        return () => {
+            socket.disconnect();
+        }
+    }, []);
+
+    useEffect(() => {
+        if(socketListener) {
+            socketListener.on("gerar_notificacao", (mensagem) => {
+                setNotificacaoTexto(mensagem.notificacao.message);
+                setMostrarNotificacao(true);
+
+                setTimeout(() => {
+                    setMostrarNotificacao(false);
+                }, 5000);
+            })
+        }
+
+        return () => {
+            if (socketListener) {
+                socketListener.off("gerar_notificacao");
+            }
+        };
+    }, [socketListener]);
+
     return(
         <div>
             <Header />
             <InserirContainer>
+                {
+                    mostrarNotificacao ? <NotificacaoSocket texto={notificacaoTexto}/> : null
+                }
                 <Titulo titulo='Adicionar filme'/>
                 {
                     mensagemSucesso !== '' ? <MensagemSucesso texto={mensagemSucesso}/> : null

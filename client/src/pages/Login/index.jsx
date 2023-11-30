@@ -28,7 +28,6 @@ function Login() {
             localStorage.setItem('token', resposta.data.token);
             navegar('/');
         }).catch((erro) => {
-            console.log(erro);
             setMensagemErro(erro.response.data.message);
         })
     }

@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const PORT = 3001;
 const filmes = require('./routes/filmes');
 const usuarios = require('./routes/usuarios').router;
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {cors: {origin: "http://localhost:5173"}});
 
 //config
     //mongoose
@@ -22,13 +24,22 @@ const usuarios = require('./routes/usuarios').router;
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
 
+    //socket.io
+    io.on('connection', (socket) => {
+        console.log('Usuario conectado: '+socket.id);
+
+        socket.on("filme_adicionado", (message) => {
+            console.log(message.message);
+            socket.broadcast.emit("gerar_notificacao", {notificacao: message});
+        })
+    })
+
 //rotas
 app.use('/api/filmes', filmes);
 app.use('/api/usuarios', usuarios);
 
 
 //server
-
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 })

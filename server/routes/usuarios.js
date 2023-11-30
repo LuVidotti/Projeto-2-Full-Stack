@@ -26,7 +26,7 @@ function verifyToken(req,res,next) {
     })
 }
 
-router.post('/cadastrar', (req,res) => {
+router.post('/', (req,res) => {
     let erros = [];
     
     if(!req.body.usuario || typeof req.body.usuario === undefined || req.body.usuario === null) {

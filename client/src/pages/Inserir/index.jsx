@@ -68,6 +68,10 @@ function Inserir() {
             socketListener.emit("filme_adicionado", ({message: "Um filme acabou de ser adicionado!!!"}));
 
             setMensagemSucesso(resposta.data.message);
+
+            setTimeout(() => {
+                setMensagemSucesso('');
+            }, 5000);
         } catch(erro){
             setMensagemErro(erro.response.data[0].message);
         }

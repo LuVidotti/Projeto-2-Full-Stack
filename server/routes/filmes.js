@@ -5,6 +5,8 @@ require('../models/Filme');
 const Filme = mongoose.model('filmes');
 const usuarios = require('../routes/usuarios');
 const redis = require('express-redis-cache');
+require('../models/RegistroBusca');
+const RegistroBusca = mongoose.model('registroBuscas');
 
 const cache = redis();
 
@@ -65,8 +67,18 @@ router.get('/', (req,res) => {
 
 router.get('/:nomeFilme', usuarios.verifyToken, cache.route({expire: 10}), (req,res) => {
     const termoPesquisa = RegExp(req.params.nomeFilme, 'i');
+    const user = req.user;
 
     Filme.find({nome: termoPesquisa}).then((filmes) => {
+        const novaBusca = {
+            usuarioId: user._id,
+            termoBuscado: termoPesquisa,
+        }
+        new RegistroBusca(novaBusca).save().then((busca) => {
+            console.log(`Busca registrada com sucesso, busca: ${busca}`);
+        }).catch((erro) => {
+            console.log("erro ao resgistrar busca, erro:" +erro);
+        })
         res.status(200).json(filmes);
     }).catch((erro) => {
         res.status(500).json({message: 'Erro interno no servidor', erro});

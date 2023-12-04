@@ -1,0 +1,5 @@
+{"filmeSalvo":{"__v":0,"_id":"656d4f8fd14ab12b75f393ea","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasd","nome":"teste logger"},"level":"info","message":"Um filme foi adicionado"}
+{"filmeSalvo":{"__v":0,"_id":"656d4fb2d14ab12b75f393f3","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasd","nome":"teste logger 2"},"level":"info","message":"Um filme foi adicionado"}
+{"busca":{"__v":0,"_id":"656d50b179823ecd1301a619","dataBusca":"2023-12-04T04:07:37.094Z","termoBuscado":"/joker/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"filmeSalvo":{"__v":0,"_id":"656d50c579823ecd1301a61c","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasd","nome":"teste logger 3"},"level":"info","message":"Um filme foi adicionado"}
+{"busca":{"__v":0,"_id":"656d50d379823ecd1301a622","dataBusca":"2023-12-04T04:07:37.094Z","termoBuscado":"/logger/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}

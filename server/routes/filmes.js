@@ -7,6 +7,7 @@ const usuarios = require('../routes/usuarios');
 const redis = require('express-redis-cache');
 require('../models/RegistroBusca');
 const RegistroBusca = mongoose.model('registroBuscas');
+const logger = require('../logger');
 
 const cache = redis();
 
@@ -49,9 +50,10 @@ router.post('/', usuarios.verifyToken, (req,res) => {
         }
 
         new Filme(novoFilme).save().then((filmeSalvo) => {
+            logger.info("Um filme foi adicionado", {filmeSalvo: filmeSalvo});
             res.status(201).json({ message: 'Filme adicionado com sucesso!!!', filmeSalvo });
         }).catch((erro) => {
-            console.error(erro);
+            logger.error("Erro ao salvar filme", erro);
             res.status(500).json({ message: 'Erro interno no servidor', error: erro.message });
         });
     }
@@ -75,12 +77,13 @@ router.get('/:nomeFilme', usuarios.verifyToken, cache.route({expire: 10}), (req,
             termoBuscado: termoPesquisa,
         }
         new RegistroBusca(novaBusca).save().then((busca) => {
-            console.log(`Busca registrada com sucesso, busca: ${busca}`);
+            logger.info("busca registrada com sucesso!!!", {busca: busca});
         }).catch((erro) => {
-            console.log("erro ao resgistrar busca, erro:" +erro);
+            logger.error("Erro ao registrar busca", erro)
         })
         res.status(200).json(filmes);
     }).catch((erro) => {
+        logger.error("Erro interno no servidor", erro);
         res.status(500).json({message: 'Erro interno no servidor', erro});
     })
 })

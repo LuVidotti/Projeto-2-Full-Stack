@@ -6,16 +6,19 @@ require('../models/Usuario');
 const mongoose = require('mongoose');
 const Usuario = mongoose.model('usuarios');
 const SECRET = 'segredo_jwt';
+const logger = require('../logger');
 
 function verifyToken(req,res,next) {
     const token = req.headers.authorization;
 
     if(!token) {
+        logger.error("Erro, token nao fornecido");
         res.status(403).json({message: 'Erro, token nao fornecido'});
     }
 
     jwt.verify(token, SECRET, (err, decoded) => {
         if(err) {
+            logger.error("Erro, token invalido");
             res.status(400).json({message: 'Erro, token invalido', erro:err});
         }
 

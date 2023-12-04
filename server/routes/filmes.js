@@ -21,22 +21,27 @@ router.post('/', usuarios.verifyToken, (req,res) => {
     let erros = [];
 
     if(validarCaracteresIndesejados(req.body.nome)) {
+        logger.error("Erro, ha alguns caracteres invalidos no campo nome")
         erros.push({message: "Erro, ha alguns caracteres invalidos no campo nome"});
     } 
 
     if(validarCaracteresIndesejados(req.body.descricao)) {
+        logger.error("Erro, ha alguns caracteres invalidos no campo descricao")
         erros.push({message: "Erro, ha alguns caracteres invalidos no campo descricao"});
     } 
     
     if(!req.body.nome || typeof req.body.nome === undefined || req.body.nome === null || req.body.nome === "") {
+        logger.error("Erro, nome invalido")
         erros.push({message: 'Erro, nome invalido'});
     }
 
     if(!req.body.dataLancamento || typeof req.body.dataLancamento === undefined || req.body.dataLancamento === null || req.body.dataLancamento === "") {
+        logger.error("Erro, data invalida");
         erros.push({message: 'Erro, data invalida'});
     }
 
     if(!req.body.descricao || typeof req.body.descricao === undefined || req.body.descricao === null || req.body.descricao === "") {
+        logger.error("Erro, descricao invalida")
         erros.push({message: 'Erro, descricao invalida'});
     }
 

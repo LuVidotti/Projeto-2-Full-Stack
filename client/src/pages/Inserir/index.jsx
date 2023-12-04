@@ -73,7 +73,7 @@ function Inserir() {
                 setMensagemSucesso('');
             }, 5000);
         } catch(erro){
-            setMensagemErro(erro.response.data.message);
+            setMensagemErro(erro.response.data[0].message);
         }
     }
 

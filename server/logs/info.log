@@ -5,3 +5,13 @@
 {"busca":{"__v":0,"_id":"656d50d379823ecd1301a622","dataBusca":"2023-12-04T04:07:37.094Z","termoBuscado":"/logger/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
 {"busca":{"__v":0,"_id":"656d514a79823ecd1301a626","dataBusca":"2023-12-04T04:07:37.094Z","termoBuscado":"/batman/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
 {"filmeSalvo":{"__v":0,"_id":"656d516379823ecd1301a629","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasd","nome":"logger 4"},"level":"info","message":"Um filme foi adicionado"}
+{"busca":{"__v":0,"_id":"656d52b179823ecd1301a632","dataBusca":"2023-12-04T04:07:37.094Z","termoBuscado":"/redis/i","usuarioId":"655f9c190e25a3ced291e96a"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"filmeSalvo":{"__v":0,"_id":"656d52eb79823ecd1301a635","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasasd","nome":"teste"},"level":"info","message":"Um filme foi adicionado"}
+{"level":"error","message":"Erro, token invalido"}
+{"level":"error","message":"Erro, token nao fornecido"}
+{"level":"error","message":"Erro, token invalido"}
+{"busca":{"__v":0,"_id":"656d53b94e4acda6b712ebd3","dataBusca":"2023-12-04T04:20:13.675Z","termoBuscado":"/batman/i","usuarioId":"655f9c190e25a3ced291e96a"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"level":"error","message":"Erro, ha alguns caracteres invalidos no campo nome"}
+{"level":"error","message":"Erro, ha alguns caracteres invalidos no campo descricao"}
+{"level":"error","message":"Erro, ha alguns caracteres invalidos no campo nome"}
+{"filmeSalvo":{"__v":0,"_id":"656d54f9ff36de3af0eeb681","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasd","nome":"teste"},"level":"info","message":"Um filme foi adicionado"}

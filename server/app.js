@@ -8,6 +8,8 @@ const filmes = require('./routes/filmes');
 const usuarios = require('./routes/usuarios').router;
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {cors: {origin: "http://localhost:5173"}});
+const fs = require("fs");
+const https = require('https');
 
 //config
     //mongoose
@@ -41,4 +43,11 @@ app.use('/api/usuarios', usuarios);
 //server
 server.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
+})
+
+https.createServer({
+    cert: fs.readFileSync("./SSL/code.crt"),
+    key: fs.readFileSync("./SSL/code.key")
+}, app).listen(3002, () => {
+    console.log("Rodando em https");
 })

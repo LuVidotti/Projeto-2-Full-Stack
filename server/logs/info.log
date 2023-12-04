@@ -20,3 +20,16 @@
 {"level":"error","message":"Erro, token invalido"}
 {"busca":{"__v":0,"_id":"656dcd0a219a6da52e270fee","dataBusca":"2023-12-04T12:58:03.975Z","termoBuscado":"/joker/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
 {"filmeSalvo":{"__v":0,"_id":"656dcd16219a6da52e270ff2","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasd","nome":"asdasd"},"level":"info","message":"Um filme foi adicionado"}
+{"level":"error","message":"Erro, token invalido"}
+{"busca":{"__v":0,"_id":"656e3f39c1e81ebd413ce08a","dataBusca":"2023-12-04T21:05:24.606Z","termoBuscado":"/joker/i","usuarioId":"655f9c190e25a3ced291e96a"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"level":"error","message":"Erro, token invalido"}
+{"busca":{"__v":0,"_id":"656e3f4cc1e81ebd413ce091","dataBusca":"2023-12-04T21:05:24.606Z","termoBuscado":"/socket/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"filmeSalvo":{"__v":0,"_id":"656e3f5bc1e81ebd413ce094","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasd","nome":"asdasd"},"level":"info","message":"Um filme foi adicionado"}
+{"filmeSalvo":{"__v":0,"_id":"656e3f67c1e81ebd413ce097","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasd","nome":"asdasd"},"level":"info","message":"Um filme foi adicionado"}
+{"busca":{"__v":0,"_id":"656e43736c8a0770f718033b","dataBusca":"2023-12-04T21:23:08.239Z","termoBuscado":"/joker/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"filmeSalvo":{"__v":0,"_id":"656e43ab6c8a0770f7180340","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasd","nome":"asdasd"},"level":"info","message":"Um filme foi adicionado"}
+{"filmeSalvo":{"__v":0,"_id":"656e43c66c8a0770f7180345","dataLancamento":"2003-02-22T00:00:00.000Z","descricao":"asdasd","nome":"teste https"},"level":"info","message":"Um filme foi adicionado"}
+{"busca":{"__v":0,"_id":"656e45d3adfdce544a9fdb0c","dataBusca":"2023-12-04T21:34:02.110Z","termoBuscado":"/joker/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"busca":{"__v":0,"_id":"656e4630adfdce544a9fdb13","dataBusca":"2023-12-04T21:34:02.110Z","termoBuscado":"/joker/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"filmeSalvo":{"__v":0,"_id":"656e4645adfdce544a9fdb19","dataLancamento":"2212-02-22T00:00:00.000Z","descricao":"asdasdasd","nome":"asdasd"},"level":"info","message":"Um filme foi adicionado"}
+{"filmeSalvo":{"__v":0,"_id":"656e4654adfdce544a9fdb1c","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasdasd","nome":"asdasds https"},"level":"info","message":"Um filme foi adicionado"}

@@ -15,3 +15,8 @@
 {"level":"error","message":"Erro, ha alguns caracteres invalidos no campo descricao"}
 {"level":"error","message":"Erro, ha alguns caracteres invalidos no campo nome"}
 {"filmeSalvo":{"__v":0,"_id":"656d54f9ff36de3af0eeb681","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasd","nome":"teste"},"level":"info","message":"Um filme foi adicionado"}
+{"busca":{"__v":0,"_id":"656dc9c11645c4dd8ac0e426","dataBusca":"2023-12-04T12:12:44.521Z","termoBuscado":"/batman/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"level":"error","message":"Erro, token invalido"}
+{"level":"error","message":"Erro, token invalido"}
+{"busca":{"__v":0,"_id":"656dcd0a219a6da52e270fee","dataBusca":"2023-12-04T12:58:03.975Z","termoBuscado":"/joker/i","usuarioId":"655f9b8f0e25a3ced291e968"},"level":"info","message":"busca registrada com sucesso!!!"}
+{"filmeSalvo":{"__v":0,"_id":"656dcd16219a6da52e270ff2","dataLancamento":"2003-12-22T00:00:00.000Z","descricao":"asdasdasd","nome":"asdasd"},"level":"info","message":"Um filme foi adicionado"}

@@ -5,7 +5,8 @@ const bcrypt = require('bcryptjs');
 require('../models/Usuario');
 const mongoose = require('mongoose');
 const Usuario = mongoose.model('usuarios');
-const SECRET = 'segredo_jwt';
+require('dotenv').config();
+const SECRET = process.env.SEGREDO;
 const logger = require('../logger');
 
 function verifyToken(req,res,next) {
